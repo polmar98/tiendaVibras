@@ -1,0 +1,38 @@
+.tabla {
+    width: 100%;
+    border: 2px solid #000;
+    background: #4d4c4c;
+    color: goldenrod;
+}
+
+th, td {
+    text-align: left;
+    border: 1px solid rgb(36, 32, 32);
+    border-collapse: collapse;
+}
+
+.borrar {
+    background-color: red;
+    color: black;
+    text-align: center;
+    width: 60px;
+}
+
+button {
+    margin-left: 20px;
+    width: 150px;
+    font-size: 14px;
+}
+
+.numero {
+    text-align: right;
+}
+
+.cantidad {
+    text-align: right;
+    width: 50px; 
+}
+
+.input2 {
+    width: 50px;  
+}
