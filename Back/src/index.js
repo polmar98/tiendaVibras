@@ -2,6 +2,8 @@ const express = require("express");
 const router = express();
 const routes  = require("./routes/indexRoutes");
 const morgan = require("morgan");
+const multer = require('multer');
+const path = require('path');
 
 //midleweares
 router.use((req, res, next) => {
@@ -17,6 +19,14 @@ router.use((req, res, next) => {
 router.use(express.json());
 router.use(express.urlencoded({ extended: false }));
 router.use(morgan("dev"));
+const storage = multer.diskStorage({
+  destination: path.join(__dirname, 'public/uploads'),
+  filename: (req, file, cb) => {
+    cb(null, new Date().getTime() + path.extname(file.originalname));
+  }
+});
+
+router.use(multer({storage}).single('image'));
 router.use(routes);
 router.listen(4000);
 console.log("Server Running in Port 4000");

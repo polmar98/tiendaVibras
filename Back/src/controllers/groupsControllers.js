@@ -1,4 +1,14 @@
 const {pool} = require("../database.js");
+require('dotenv').config();
+
+const cloudinary = require('cloudinary');
+const fs = require('fs-extra');
+
+cloudinary.config({
+   cloud_name: process.env.CLOUD_NAME,
+   api_key: process.env.CLOUD_APIKEY,
+   api_secret: process.env.CLOUD_SECRETKEY,
+});
 
 //devuelve todos los grupos
 const getGroupAll = async() => {
@@ -28,8 +38,14 @@ const createGroup = async(datos) => {
 };
 
 //carga imagen a un grupo
-const uploadImageGroup = async(id) => {
-   return "Subir Imagen Grupo";
+const uploadImageGroup = async(id, archivo) => {
+   idart = Number(id);
+   const cloud = await cloudinary.v2.uploader.upload(archivo);
+   const url = cloud.url;
+   let query1 = "UPDATE inv_grupo set gru_imagen=? where id=?";
+   const [result] =  await pool.query(query1, [url, idart]);
+   await fs.unlink(archivo);
+   return {linkImage: url};
 };
 
 module.exports = { getGroupAll, getGroupById, updateGroup, createGroup, uploadImageGroup };
