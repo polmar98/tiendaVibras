@@ -1,6 +1,7 @@
 import axios from 'axios';
 export const GET_GROUPS = "GET_GROUPS"
 export const GET_GROUPBYID = "GET_GROUPBYID"
+export const CAMBIAR_PAGINA = 'CAMBIAR_PAGINA'
 
 export const getGroups = (rutaPpal) => {
     return async (dispatch) => {
@@ -31,3 +32,10 @@ export const getGroupById = (rutaPpal, id) => {
       }
     };
 };
+
+export function cambiarPagina(numero) {
+  return {
+      type: CAMBIAR_PAGINA,
+      payload: numero
+  }        
+}

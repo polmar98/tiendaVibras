@@ -1,24 +1,42 @@
 import React from "react";
 import style from "../styles/CardArticle.module.css";
 import { Link } from "react-router-dom";
-import imagex from "../img/buzo3.jpg"
+import imagex from "../img/noimagen.png"
 import {add_itemCar} from "../Redux/ShoppingCar/ShoppingCarActions";
 import { useDispatch } from "react-redux";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-const CardArticle = ({id,name,referen,pPublico,pMayorista,marca,image}) => {
+const CardArticle = ({id,name,referen,pPublico,pMayorista,marca,image,idusua,idAdmin}) => {
    const dispatch = useDispatch();
+   const precio = idusua == 1 ? pMayorista : pPublico;
+   if(image.length > 0) imagex = image;
+
    const handlerAddCar = () => {
       const item = {
         id,
         name,
         talla: '*No definida*',
         cantidad: 1,
-        valorUni: pPublico,
-        vtotal: pPublico,
+        valorUni: precio,
+        vtotal: precio,
       };
       dispatch(add_itemCar(item));
       addCarrito(item);
-      alert("Se ha agregado un item al carrito");
+      mensaje();
+   };
+
+   const mensaje = () => {
+      toast('🦄 Articulo agregado al carrito!', {
+         position: "top-right",
+         autoClose: 2000,
+         hideProgressBar: false,
+         closeOnClick: true,
+         pauseOnHover: true,
+         draggable: true,
+         progress: undefined,
+         theme: "dark",
+         });
    };
 
    const addCarrito = (item) => {
@@ -46,10 +64,14 @@ const CardArticle = ({id,name,referen,pPublico,pMayorista,marca,image}) => {
       <div className={style.tarjeta}>
          <h4 className={style.titulo}>{name}</h4>
          <Link to={`/Details/${id}`}>  
-             <img className={style.imagen} src={imagex} alt="" /> 
+             <img className={style.imagen} src={image} alt="" /> 
           </Link>
-          <h4 className={style.precio}>${new Intl.NumberFormat().format(pPublico)}</h4>
-          <h4 className={style.agregar} onClick={() => handlerAddCar()}>Agregar al Carrito</h4>
+          <h4 className={style.precio}>${new Intl.NumberFormat().format(precio)}</h4>
+          {idAdmin==1 
+             ? <Link to={`/ImagenArticles/${id}`}><h4 className={style.agregar}>Cambiar Imagen</h4></Link>
+             : <h4 className={style.agregar} onClick={() => handlerAddCar()}>Agregar al Carrito</h4>
+          }
+          <ToastContainer />
       </div>
    )
 };

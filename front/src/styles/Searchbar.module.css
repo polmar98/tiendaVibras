@@ -1,0 +1,15 @@
+.search {
+    background-color: darkgray;
+    height: 30px;
+    border-radius: 10px;
+    padding-top: 8px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.boton {
+    width: 70px;
+    border-radius: 10px;
+    margin-left: 2px;
+    cursor: pointer;
+}

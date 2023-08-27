@@ -6,12 +6,14 @@ import groupReducer from "./Groups/GroupsReducer";
 import rutaReducer from "./Rutas/RutasReducer";
 import articlesReducer from "./Articles/ArticlesReducer";
 import shoppingCarReducer from "./ShoppingCar/ShoppingCarReducer";
+import UsersReducer from "./Users/UsersReducer";
 
 const rootReducer = combineReducers({
     Groups: groupReducer,
     Rutas: rutaReducer,
     Articles: articlesReducer,
     ShoppingCar: shoppingCarReducer,
+    Users: UsersReducer,
 
 });
 

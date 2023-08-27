@@ -8,6 +8,7 @@
 }
 
 .menu {
+    margin-top: 20px;
     display: flex;
     align-content: space-between;
     margin-left: 150px;
@@ -27,6 +28,7 @@
 }
 
 .logo {
+    padding-top: 10px;
     width: 50px;
     height: 50px;
 }
@@ -34,4 +36,14 @@
 .carrito {
     width: 30px;
     heigth: 30px;
+}
+
+.titulo {
+    color: goldenrod;
+    font-style: italic;
+}
+
+.searchbar {
+    margin-top: 20px;
+    margin-left: 50px;
 }

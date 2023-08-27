@@ -1,7 +1,9 @@
 import CardArticle from "./CardArticle";
 import style from "../styles/CardsArticles.module.css";
+import { useSelector } from "react-redux";
 
 const CardsArticles = ({lisArt}) => {
+   const usuario = useSelector((state) => state.Users.usuario);
    if(typeof lisArt == "undefined") lisArt = [];
    return (
       <div>
@@ -15,7 +17,9 @@ const CardsArticles = ({lisArt}) => {
                  pPublico={prop.precioPublico}
                  pMayorista={prop.precioMayorista}
                  marca={prop.marc_nombre}
-                 image={prop.gru_imagen}
+                 image={prop.art_imagen}
+                 idusua={usuario.mayorista}
+                 idAdmin={usuario.admin}
               />
           )}
         
