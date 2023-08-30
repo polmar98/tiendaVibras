@@ -2,6 +2,8 @@ import axios from 'axios';
 export const GET_ARTICLES = "GET_ARTICLES";
 export const GET_ARTICLEBYID = 'GET_ARTICLEBYID';
 export const CAMBIAR_PAGINA = "CAMBIAR_PAGINA";
+export const SEARCH_ARTICLES = "SEARCH_ARTICLES";
+
 
 export const getArticles = (rutaPpal, idGroup) => {
     return async (dispatch) => {
@@ -38,4 +40,20 @@ export function cambiarPagina(numero) {
       type: CAMBIAR_PAGINA,
       payload: numero
   }        
-}
+};
+
+export const searchArticles = (rutaPpal, filtro) => {
+  return async (dispatch) => {
+      try {
+        const response = await axios.get(`${rutaPpal}/articles?art_name=${filtro}`);
+        const data = response.data;
+        return dispatch({
+          type: GET_ARTICLES,
+          payload: data,
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+};
+

@@ -12,7 +12,6 @@ import Searchbar from "./Searchbar";
 
 function Navbar() {
     const usuario = useSelector((state) => state.Users.usuario);
-    console.log(usuario);
     return (
         <div className={style.barra}>
             <img src={logo} alt="" className={style.logo}/>

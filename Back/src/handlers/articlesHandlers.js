@@ -2,8 +2,22 @@ require('dotenv').config();
 const express = require("express");
 const {getArticlesAll,
       getArticlesById,
-      updateImagenArticle} = require("../controllers/articlesControllers");
+      updateImagenArticle,
+      searchArticles} = require("../controllers/articlesControllers");
 const server = express();
+
+
+//esta ruta devuelve todos los articulos filtrados por un query
+server.get('/', async(req, res) => {
+      const filtro = req.query; 
+      try {
+         const result = await searchArticles(filtro);
+         res.status(200).json(result);
+      } catch (error) {
+         console.log(error.message);
+         res.status(500).json({message: error.messaje});
+      }
+});
 
 
 //esta ruta devuelve todos los articulos de una linea con la lista de precios enviada
@@ -40,6 +54,9 @@ server.get('/:id', async(req, res) => {
       console.log(error.message)
       res.status(500).json({message: error.messaje});
    }
+
+
+
 });
 
 
