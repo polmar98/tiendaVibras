@@ -9,7 +9,7 @@ import ImagenArticles from './Views/ImagenArticles';
 import ImagenGroups from './Views/ImagenGroups';
 import Login from './Views/Login';
 import Logout from './Views/Logout';
-
+import Contac from './Views/Contac';
 
 function App() {
   const params = useParams();
@@ -25,6 +25,7 @@ function App() {
           <Route path="/ImagenGroups/:id" element={<ImagenGroups/>} />
           <Route path="/Login" element={<Login/>} />
           <Route path="/Logout" element={<Logout/>} />
+          <Route path="/Contactenos" element={<Contac/>} />
        </Routes>
 
     </div>
