@@ -16,7 +16,7 @@ const getArticlesAll = async(id) => {
     const listaPublica = 1;
     const listaMayorista = 2;
     let query1 = "SELECT A.id,A.art_detalles,A.art_referencia,B.marc_nombre,C.det_precioneto as precioPublico,A.art_imagen,";
-    query1+=" G.det_precioneto as precioMayorista from inv_articulo A ";
+    query1+=" G.det_precioneto as precioMayorista,A.art_costopromedio from inv_articulo A ";
     query1+=" left join inv_marca B on B.id=A.marca_id ";
     query1+=" left join inv_detalistaprecios C on C.det_articuloid=A.id ";
     query1+=" left join inv_detalistaprecios G on G.det_articuloid=A.id ";
@@ -69,4 +69,15 @@ const searchArticles = async(filtro) => {
     return result; 
 };
 
-module.exports = { getArticlesAll, getArticlesById, updateImagenArticle, searchArticles };
+//actualiza imagen a un grupo
+const actualizaImagen = async(datos) => {
+    const {id, imagen} = datos;
+    if(!id || !imagen) {
+       throw Error("Datos incompletos");
+    };
+    let query1 = "UPDATE inv_articulo set art_imagen=? where id=?";
+    const [result] =  await pool.query(query1, [imagen, id]);
+    return {message: "Imagen Actualizada"};
+ };
+
+module.exports = { getArticlesAll, getArticlesById, updateImagenArticle, searchArticles, actualizaImagen };

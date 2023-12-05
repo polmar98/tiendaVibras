@@ -6,6 +6,7 @@ import CardsGroup from "../Components/CardsGroup";
 import { useAuth0 } from "@auth0/auth0-react";
 import { ingresoSistema } from "../Redux/Users/UsersActions";
 import Paginado from "../Components/Paginado";
+import PiePagina from "../Components/PiePagina";
 import style from "../styles/Paginado.module.css";
 
 
@@ -18,7 +19,7 @@ function Home() {
    const dispatch = useDispatch();
    //declaramos las variables para el paginado
    const [currentPage, setCurrentPage] = useState(pagActual);   //inicializamos la primera pagina en 1
-   const recordsPerPage = 9; //declaramos 9 registros x pagina
+   const recordsPerPage = 8; //declaramos 8 registros x pagina
    const indexOfLastRecord = currentPage * recordsPerPage;  //declaramos indice del ultimo registro
    const indexOfFirtsRecord = indexOfLastRecord - recordsPerPage;  //declaramos indice del primer registros
    const currentRecords = groupLista.slice(indexOfFirtsRecord, indexOfLastRecord); //decalramos registros de la pagina actual
@@ -47,7 +48,7 @@ function Home() {
                   actualPage={currentPage}
               />
            </div>
-
+           <PiePagina/>
        </div>
    )
 };

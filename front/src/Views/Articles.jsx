@@ -8,6 +8,7 @@ import CardsArticles from "../Components/CardsArticles";
 import Subtitle from "../Components/Subtitle";
 import Paginado from "../Components/Paginado";
 import style from "../styles/Paginado.module.css";
+import PiePagina from "../Components/PiePagina";
 
 function Articles() {
     const params = useParams();
@@ -20,7 +21,7 @@ function Articles() {
 
     //declaramos las variables para el paginado
     const [currentPage, setCurrentPage] = useState(1);   //inicializamos la primera pagina en 1
-    const recordsPerPage = 9; //declaramos 9 registros x pagina
+    const recordsPerPage = 12; //declaramos 12 registros x pagina
     const indexOfLastRecord = currentPage * recordsPerPage;  //declaramos indice del ultimo registro
     const indexOfFirtsRecord = indexOfLastRecord - recordsPerPage;  //declaramos indice del primer registros
     const currentRecords = listArticles.slice(indexOfFirtsRecord, indexOfLastRecord); //decalramos registros de la pagina actual
@@ -46,7 +47,8 @@ function Articles() {
                   paginado={paginado}
                   actualPage={currentPage}
               />
-           </div>            
+           </div> 
+           <PiePagina/>           
          </div>
      )
 };

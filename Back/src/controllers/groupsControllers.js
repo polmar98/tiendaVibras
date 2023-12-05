@@ -48,4 +48,15 @@ const uploadImageGroup = async(id, archivo) => {
    return {linkImage: url};
 };
 
-module.exports = { getGroupAll, getGroupById, updateGroup, createGroup, uploadImageGroup };
+//actualiza imagen a un grupo
+const actualizaImagen = async(datos) => {
+   const {id, imagen} = datos;
+   if(!id || !imagen) {
+      throw Error("Datos incompletos");
+   };
+   let query1 = "UPDATE inv_grupo set gru_imagen=? where id=?";
+   const [result] =  await pool.query(query1, [imagen, id]);
+   return {message: "Imagen Actualizada"};
+};
+
+module.exports = { getGroupAll, getGroupById, updateGroup, createGroup, uploadImageGroup, actualizaImagen };

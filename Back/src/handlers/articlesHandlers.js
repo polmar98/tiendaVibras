@@ -3,6 +3,7 @@ const express = require("express");
 const {getArticlesAll,
       getArticlesById,
       updateImagenArticle,
+      actualizaImagen,
       searchArticles} = require("../controllers/articlesControllers");
 const server = express();
 
@@ -54,9 +55,18 @@ server.get('/:id', async(req, res) => {
       console.log(error.message)
       res.status(500).json({message: error.messaje});
    }
+});
 
-
-
+ //actualizar imagen de articulo
+ server.post('/', async(req, res) => {
+   const datos = req.body;
+   try {
+       const result = await actualizaImagen(datos);
+       res.status(200).json(result);
+   } catch (error) {
+       console.log(error.message)
+       res.status(500).json({message: error.messaje});        
+   }
 });
 
 

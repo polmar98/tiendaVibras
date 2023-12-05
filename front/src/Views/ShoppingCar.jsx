@@ -6,6 +6,7 @@ import Subtitle from "../Components/Subtitle";
 import style from "../styles/ShoppingCar.module.css";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import PiePagina from "../Components/PiePagina";
 
 function ShoppingCar() {
    const car = useSelector((state) => state.ShoppingCar.car);
@@ -145,10 +146,11 @@ function ShoppingCar() {
               <button><Link to="/Home">Seguir Comprando</Link></button>
               <button onClick={handleVaciarCarrito}>Vaciar Carrito</button>
               <button>Guardar Carrito</button>
-              <button>Generar Pedido</button>
+              <button><Link to="/Pedidos">Generar Pedido</Link></button>
               <button>Finalizar Compra</button>
           </div>
           <ToastContainer />
+          <PiePagina/>
       </div>
    )
 };

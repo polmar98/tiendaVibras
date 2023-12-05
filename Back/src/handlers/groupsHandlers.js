@@ -1,7 +1,8 @@
 const express = require("express");
 const {getGroupAll, getGroupById,
        updateGroup, createGroup,
-       uploadImageGroup} = require("../controllers/groupsControllers");
+       uploadImageGroup, actualizaImagen} = require("../controllers/groupsControllers");
+
 
 const server = express();
 
@@ -38,6 +39,18 @@ server.get('/:id', async(req, res) => {
        console.log(error.message)
        res.status(500).json({message: error.messaje});
     } 
+ });
+
+ //actualizar imagen de grupo
+ server.post('/', async(req, res) => {
+    const datos = req.body;
+    try {
+        const result = await actualizaImagen(datos);
+        res.status(200).json(result);
+    } catch (error) {
+        console.log(error.message)
+        res.status(500).json({message: error.messaje});        
+    }
  });
 
 module.exports = server;

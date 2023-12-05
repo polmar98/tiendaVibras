@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const CardArticle = ({id,name,referen,pPublico,pMayorista,marca,image,idusua,idAdmin}) => {
+const CardArticle = ({id,name,referen,pPublico,pMayorista,marca,image,idusua,idAdmin,precosto}) => {
    const dispatch = useDispatch();
    const precio = idusua == 1 ? pMayorista : pPublico;
    if(image.length > 0) imagex = image;
@@ -20,6 +20,7 @@ const CardArticle = ({id,name,referen,pPublico,pMayorista,marca,image,idusua,idA
         cantidad: 1,
         valorUni: precio,
         vtotal: precio,
+        precosto,
       };
       dispatch(add_itemCar(item));
       addCarrito(item);
@@ -54,7 +55,8 @@ const CardArticle = ({id,name,referen,pPublico,pMayorista,marca,image,idusua,idA
                      talla: item.talla,
                      cantidad: item.cantidad,
                      valorUni: item.valorUni,
-                     vtotal: item.vtotal}   
+                     vtotal: item.vtotal,
+                     precosto: item.precosto}   
       storedItems.push(nitem);
       const updatedItemsJSON = JSON.stringify(storedItems);
       localStorage.setItem("Carrito", updatedItemsJSON);

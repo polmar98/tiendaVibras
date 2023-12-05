@@ -3,7 +3,7 @@ export const GET_ARTICLES = "GET_ARTICLES";
 export const GET_ARTICLEBYID = 'GET_ARTICLEBYID';
 export const CAMBIAR_PAGINA = "CAMBIAR_PAGINA";
 export const SEARCH_ARTICLES = "SEARCH_ARTICLES";
-
+export const UPDATE_IMAGEN = "UPDATE_IMAGEN";
 
 export const getArticles = (rutaPpal, idGroup) => {
     return async (dispatch) => {
@@ -56,4 +56,19 @@ export const searchArticles = (rutaPpal, filtro) => {
       }
     };
 };
+
+export const actualizarImagen = (rutaPpal, datos) => {
+  console.log(datos);
+  return async(dispatch) => {
+    try {
+       const response = await axios.post(`${rutaPpal}/articles`, datos);
+       return dispatch({
+         type: "UPDATE_IMAGEN",
+       });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+};
+
 

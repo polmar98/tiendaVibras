@@ -7,6 +7,7 @@ import style from "../styles/Details.module.css";
 import {add_itemCar} from "../Redux/ShoppingCar/ShoppingCarActions";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import PiePagina from "../Components/PiePagina";
 
 function Details() {
     const rutaPpal = useSelector((state) => state.Rutas.rutas); 
@@ -82,6 +83,7 @@ function Details() {
                <h4>Precio : ${new Intl.NumberFormat().format(pPublico)}</h4>
             </div>
             <ToastContainer />
+            <PiePagina/>
          </div>
     )
 };

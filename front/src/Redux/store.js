@@ -7,6 +7,7 @@ import rutaReducer from "./Rutas/RutasReducer";
 import articlesReducer from "./Articles/ArticlesReducer";
 import shoppingCarReducer from "./ShoppingCar/ShoppingCarReducer";
 import UsersReducer from "./Users/UsersReducer";
+import VendedorReducer from "./Vendedor/VendedorReducer";
 
 const rootReducer = combineReducers({
     Groups: groupReducer,
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
     Articles: articlesReducer,
     ShoppingCar: shoppingCarReducer,
     Users: UsersReducer,
+    Vendedor: VendedorReducer
 
 });
 

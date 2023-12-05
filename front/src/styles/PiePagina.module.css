@@ -1,0 +1,28 @@
+.wassaph {
+   background-color: darkgreen;
+   color: white;
+   font-size: 14px;
+   width: 100px;
+   padding: 2px;
+   border-radius: 10px;
+   margin-right: 10px;
+}
+
+.contenedor {
+    display: flex;
+    justify-content: center;
+    margin-top: 0;
+}
+
+.titulo {
+    font-weight: bold;
+    font-size: 16px;
+    color: green;
+    margin-bottom: 0;
+}
+
+.wassaph:hover {
+    color: greenyellow;
+    background-color: forestgreen;
+    cursor: pointer;
+}

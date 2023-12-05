@@ -1,6 +1,7 @@
 import React from "react";
 import style from "../styles/Contac.module.css";
 import Subtitle from "../Components/Subtitle";
+import PiePagina from "../Components/PiePagina";
 
 function Contac() {
    const titulo="Contáctenos"; 
@@ -16,6 +17,7 @@ function Contac() {
             <button type="submit" className={style.boton}>Enviar</button>
          </form>
         </div>
+        <PiePagina/>
       </div>
    )
 };

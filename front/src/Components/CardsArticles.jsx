@@ -18,6 +18,7 @@ const CardsArticles = ({lisArt}) => {
                  pMayorista={prop.precioMayorista}
                  marca={prop.marc_nombre}
                  image={prop.art_imagen}
+                 precosto={prop.art_costopromedio}
                  idusua={usuario.mayorista}
                  idAdmin={usuario.admin}
               />

@@ -10,6 +10,7 @@ import ImagenGroups from './Views/ImagenGroups';
 import Login from './Views/Login';
 import Logout from './Views/Logout';
 import Contac from './Views/Contac';
+import GeneraPedido from './Views/GeneraPedido';
 
 function App() {
   const params = useParams();
@@ -17,6 +18,7 @@ function App() {
     <div className="App">
        <Navbar/>
        <Routes>
+          <Route path="/" element={<Home />} />
           <Route path="/Home" element={<Home />} />
           <Route path="/Articles/group/:id" element={<Articles/>} />
           <Route path="/Shopping" element={<ShoppingCar/>} />
@@ -26,6 +28,7 @@ function App() {
           <Route path="/Login" element={<Login/>} />
           <Route path="/Logout" element={<Logout/>} />
           <Route path="/Contactenos" element={<Contac/>} />
+          <Route path="/Pedidos" element={<GeneraPedido/>} />
        </Routes>
 
     </div>
